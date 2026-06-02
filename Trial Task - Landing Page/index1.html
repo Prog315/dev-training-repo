@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etech Tech School</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --surface: #111827;
+        --surface-soft: #1f2937;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --accent-strong: #0ea5e9;
+        --success: #22c55e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(56, 189, 248, 0.14),
+            transparent 35%
+          ),
+          linear-gradient(180deg, #020617 0%, #0b1229 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 1.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand {
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: 0.08em;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        color: var(--muted);
+      }
+
+      nav a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        display: grid;
+        gap: 2rem;
+        align-items: center;
+        padding: 4rem 0 3rem;
+      }
+
+      .hero-copy {
+        max-width: 620px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.5rem, 4vw, 4.5rem);
+        margin: 0;
+        line-height: 1.05;
+      }
+
+      .hero-copy p {
+        margin: 1.5rem 0 2rem;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .button-primary,
+      .button-secondary {
+        border: none;
+        border-radius: 999px;
+        padding: 0.95rem 1.8rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .button-primary {
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-strong)
+        );
+        color: #0f172a;
+      }
+
+      .button-secondary {
+        background: rgba(148, 163, 184, 0.12);
+        color: var(--text);
+      }
+
+      .hero-image {
+        background:
+          linear-gradient(180deg, rgba(56, 189, 248, 0.16), transparent 42%),
+          radial-gradient(
+            circle at top right,
+            rgba(34, 197, 94, 0.18),
+            transparent 25%
+          ),
+          var(--surface);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 2rem;
+        padding: 2rem;
+      }
+
+      .hero-cards {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .hero-card {
+        background: rgba(15, 23, 42, 0.9);
+        padding: 1.25rem;
+        border-radius: 1.5rem;
+      }
+
+      .hero-card h3 {
+        margin: 0 0 0.75rem;
+        font-size: 1.05rem;
+      }
+
+      .hero-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .section {
+        padding: 3rem 0;
+      }
+
+      .section h2 {
+        font-size: clamp(2rem, 3vw, 2.75rem);
+        margin: 0 0 0.75rem;
+      }
+
+      .section p {
+        color: var(--muted);
+        max-width: 680px;
+        margin: 0;
+      }
+
+      .grid-3 {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .feature-card,
+      .program-card,
+      .stat-card {
+        background: var(--surface-soft);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 1.5rem;
+        padding: 1.75rem;
+      }
+
+      .feature-card h3,
+      .program-card h3,
+      .stat-card h3 {
+        margin-top: 0;
+      }
+
+      .program-card span {
+        display: inline-flex;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(56, 189, 248, 0.14);
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .cta-banner {
+        background: linear-gradient(
+          90deg,
+          rgba(56, 189, 248, 0.16),
+          rgba(34, 197, 94, 0.12)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 2rem;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .cta-banner h3 {
+        margin: 0 0 0.5rem;
+      }
+
+      .footer {
+        padding: 2rem 0 1rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer a {
+        color: var(--muted);
+      }
+
+      @media (min-width: 900px) {
+        .hero {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .hero-cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <div class="brand">Etech Academy</div>
+        <nav>
+          <ul>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#benefits">Why Etech</a></li>
+            <li><a href="#enroll">Enroll</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Tech school for the next generation</div>
+          <h1>Launch your career in software, data, and cloud engineering.</h1>
+          <p>
+            At Etech Academy, we train ambitious learners with hands-on courses,
+            real-world projects, and expert mentors so you can build the skills
+            top employers demand.
+          </p>
+          <div class="hero-actions">
+            <a href="#enroll" class="button-primary">Start your journey</a>
+            <a href="#programs" class="button-secondary">Explore programs</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-cards">
+            <div class="hero-card">
+              <h3>Project-based learning</h3>
+              <p>
+                Build a portfolio with modern apps, websites, and dashboards
+                designed for real jobs.
+              </p>
+            </div>
+            <div class="hero-card">
+              <h3>Career-ready support</h3>
+              <p>
+                Get interview coaching, résumé feedback, and employer networking
+                from our career team.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs" class="section">
+        <h2>Programs built for every tech path</h2>
+        <p>
+          Choose a career track and train with a curriculum that combines
+          foundational skills with the latest tools and industry standards.
+        </p>
+        <div class="grid-3" style="margin-top: 1.75rem">
+          <article class="program-card">
+            <span>Software</span>
+            <h3>Full Stack Web Development</h3>
+            <p>
+              Learn HTML, CSS, JavaScript, React, Node.js, and deployment best
+              practices for building production-ready apps.
+            </p>
+          </article>
+          <article class="program-card">
+            <span>Data</span>
+            <h3>Data Science & Analytics</h3>
+            <p>
+              Master Python, SQL, data visualization, and machine learning
+              workflows to turn data into business insights.
+            </p>
+          </article>
+          <article class="program-card">
+            <span>Cloud</span>
+            <h3>Cloud Engineering</h3>
+            <p>
+              Gain cloud architecture, containerization, DevOps, and
+              infrastructure automation skills used by modern teams.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="benefits" class="section">
+        <div style="display: grid; gap: 1.5rem">
+          <h2>Why learners choose Etech Academy</h2>
+          <p>
+            We combine expert instructors, immersive labs, and a community
+            environment so you'll graduate with confidence and a polished
+            portfolio.
+          </p>
+        </div>
+        <div class="grid-3" style="margin-top: 1.75rem">
+          <article class="feature-card">
+            <h3>Small cohort experience</h3>
+            <p>
+              Learn in focused groups with personal mentorship, code reviews,
+              and instructor-led workshops.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Live career coaching</h3>
+            <p>
+              Practice interviewing, refine your profile, and connect with
+              hiring partners throughout the program.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Industry-aligned projects</h3>
+            <p>
+              Build products and case studies that mirror the kind of work
+              employers expect from new hires.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="cta-banner" id="enroll">
+          <div>
+            <h3>Ready to transform your future?</h3>
+            <p>
+              Apply now and join the next cohort of learners launching careers
+              in tech.
+            </p>
+          </div>
+          <a href="mailto:admissions@etechacademy.com" class="button-primary"
+            >Contact Admissions</a
+          >
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© 2026 Etech Academy</div>
+        <div>
+          <a href="mailto:hello@etechacademy.com">hello@etechacademy.com</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
